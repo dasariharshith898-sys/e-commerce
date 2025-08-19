@@ -1,0 +1,54 @@
+<!-- product.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Details | Fnf</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.jpg" alt="Flipcart" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="product-details"></div>
+
+    <hr />
+
+    <h3 style="margin: 30px 0 10px;">Recommended Products</h3>
+    <div class="product-grid" id="recommended-products">
+      <!-- Related products here -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 FlipCart Clone</p>
+  </footer>
+
+  <script src="product.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const nav = document.getElementById("navbar-links");
+  if (user) {
+    nav.innerHTML = `
+      <a href="cart.html">Cart</a>
+      <span style="color: white; margin-left: 15px;">Hi, ${user.name}</span>
+      <a href="#" onclick="logout()" style="margin-left: 15px;">Logout</a>
+    `;
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.reload();
+  }
+</script>
+</body>
+</html>

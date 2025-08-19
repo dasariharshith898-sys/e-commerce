@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fnf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.jpg" alt="Flipcart Logo" />
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products, brands and more" />
+    </div>
+    <nav>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product-grid" id="product-list">
+      <!-- Products will load here -->
+    </div>
+    <nav id="navbar-links">
+  <a href="cart.html">Cart</a>
+  <a href="login.html" id="auth-link">Login</a>
+</nav>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 FlipCart Clone</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const nav = document.getElementById("navbar-links");
+  if (user) {
+    nav.innerHTML = `
+      <a href="cart.html">Cart</a>
+      <span style="color: white; margin-left: 15px;">Hi, ${user.name}</span>
+      <a href="#" onclick="logout()" style="margin-left: 15px;">Logout</a>
+    `;
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.reload();
+  }
+</script>
+</body>
+</html>
